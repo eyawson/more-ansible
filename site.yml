@@ -1,0 +1,51 @@
+---
+- hosts: all
+  become: true
+  pre_tasks:
+    - name: install updates for CentOS
+      dnf:
+        update_only: yes
+        update_cache: yes
+      when: ansible_distribution == "CentOS"
+
+    - name: install updates for Ubuntu
+      apt:
+        upgrade: dist
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+
+- hosts: web_servers
+  become: true
+  tasks:
+    - name: Install apache servers
+      package:
+        name: apache2
+        state: latest
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+
+    - name: add php support for apache servers
+      package:
+        name: libapache2-mod-php
+        state: latest
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+
+- hosts: db_servers
+  become: true
+  tasks:
+    - name: Install CentOS servers
+      dnf:
+        name:
+          - httpd
+          - php
+        state: latest
+      when: ansible_distribution == "CentOS"
+
+- hosts: file_servers
+  become: true
+  tasks:
+    - name: Install samba
+      package:
+        name: samba
+        state: latest
