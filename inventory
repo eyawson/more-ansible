@@ -1,3 +1,9 @@
-ubuntu@54.212.164.63
-ubuntu@54.191.230.187
-ubuntu@54.200.123.89
+[web_servers]
+ubuntu@52.34.179.134
+ubuntu@54.212.216.252
+
+[db_servers]
+centos@54.189.242.239
+
+[file_servers]
+ubuntu@34.208.24.78
