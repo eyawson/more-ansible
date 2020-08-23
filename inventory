@@ -7,3 +7,6 @@ vagrant@localhost
 
 [file_servers]
 ubuntu@52.39.17.43
+
+[workstations]
+ubuntu@34.223.253.56
