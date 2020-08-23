@@ -1,9 +1,9 @@
 [web_servers]
-ubuntu@52.34.179.134
-ubuntu@54.212.216.252
+ubuntu@18.237.158.145
+ubuntu@34.223.253.56
 
 [db_servers]
-centos@54.189.242.239
+vagrant@localhost
 
 [file_servers]
-ubuntu@34.208.24.78
+ubuntu@52.39.17.43
