@@ -1,12 +1,12 @@
 [web_servers]
-ubuntu@18.237.158.145
-ubuntu@34.223.253.56
+ubuntu@52.10.243.19
+ubuntu@34.216.195.241
 
 [db_servers]
-vagrant@localhost
+centos@54.185.108.246
 
 [file_servers]
-ubuntu@52.39.17.43
+ec2-user@18.237.45.46
 
 [workstations]
-ubuntu@34.223.253.56
+ubuntu@54.202.184.108

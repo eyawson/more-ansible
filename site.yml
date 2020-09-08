@@ -4,7 +4,7 @@
   pre_tasks:
     - name: install updates for CentOS
       tags: always
-      dnf:
+      package:
         update_only: yes
         update_cache: yes
       when: ansible_distribution == "CentOS"
@@ -15,6 +15,12 @@
         upgrade: dist
         update_cache: yes
       when: ansible_distribution == "Ubuntu"
+
+    - name: install updates amazon linux
+      tags: ec2-user,amazon_linux,amazon
+      yum:
+        update_only: yes
+      when: ansible_distribution == "Amazon"
 
 - hosts: workstations
   become: true
@@ -65,11 +71,19 @@
   tasks:
     - name: Install CentOS servers
       tags: apache,centos,httpd
-      dnf:
+      package:
         name:
           - httpd
           - php
         state: latest
+      when: ansible_distribution == "CentOS"
+
+    - name: start httpd (centOS)
+      tags: apache,centos,httpd
+      service:
+        name: httpd
+        state: started
+        enabled: yes
       when: ansible_distribution == "CentOS"
 
 - hosts: file_servers
